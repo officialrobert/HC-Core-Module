@@ -1,6 +1,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { INTERESTS } from './constants/App';
+import { Model, AIsample } from './ai/index';
 
 const HomeCredit = function() {
   this.Cellphone = {
@@ -86,23 +87,32 @@ const HomeCredit = function() {
   };
 };
 
-const sampleFunction = async () => {
+const sampleFunction = async amt => {
   const HC1 = new HomeCredit();
-  const price = 25000; // in pesos unit
+  const price = amt; // in pesos unit
   const dpOffset = 2000; // in pesos unit
   const maxDP = await HC1.Cellphone.getMaxDPFromPrice(price);
   const minDP = await HC1.Cellphone.getMinDPFromPrice(price);
   const availMonth = HC1.Cellphone.getMonthRangeFromPrice(price);
 
   console.log(
-    ` Monthly in Pesos - ${HC1.Cellphone.getMonthly(
-      price,
-      minDP.result + dpOffset,
-      availMonth[availMonth.length - 1],
-      maxDP.result,
-      minDP.result
+    ` Monthly in Pesos - ${JSON.stringify(
+      HC1.Cellphone.getMonthly(
+        price,
+        minDP.result + dpOffset,
+        availMonth[availMonth.length - 1],
+        maxDP.result,
+        minDP.result
+      )
     )}`
   );
 };
 
-module.exports = { HC: new HomeCredit(), sample: sampleFunction };
+AIsample();
+
+module.exports = {
+  HC: new HomeCredit(),
+  HCsample: sampleFunction,
+  AIsample,
+  AI: new Model(),
+};

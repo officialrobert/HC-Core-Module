@@ -4,9 +4,9 @@ require("core-js/stable");
 
 require("regenerator-runtime/runtime");
 
-var _util = require("./helpers/util");
-
 var _App = require("./constants/App");
+
+var _index = require("./ai/index");
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -184,14 +184,14 @@ var sampleFunction =
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee4() {
+  regeneratorRuntime.mark(function _callee4(amt) {
     var HC1, price, dpOffset, maxDP, minDP, availMonth;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             HC1 = new HomeCredit();
-            price = 25000; // in pesos unit
+            price = amt; // in pesos unit
 
             dpOffset = 2000; // in pesos unit
 
@@ -206,7 +206,7 @@ function () {
           case 8:
             minDP = _context4.sent;
             availMonth = HC1.Cellphone.getMonthRangeFromPrice(price);
-            console.log(" Monthly in Pesos - ".concat(HC1.Cellphone.getMonthly(price, minDP.result + dpOffset, availMonth[availMonth.length - 1], maxDP.result, minDP.result)));
+            console.log(" Monthly in Pesos - ".concat(JSON.stringify(HC1.Cellphone.getMonthly(price, minDP.result + dpOffset, availMonth[availMonth.length - 1], maxDP.result, minDP.result))));
 
           case 11:
           case "end":
@@ -216,12 +216,15 @@ function () {
     }, _callee4);
   }));
 
-  return function sampleFunction() {
+  return function sampleFunction(_x4) {
     return _ref.apply(this, arguments);
   };
 }();
 
+(0, _index.AIsample)();
 module.exports = {
   HC: new HomeCredit(),
-  sample: sampleFunction
+  HCsample: sampleFunction,
+  AIsample: _index.AIsample,
+  AI: new _index.Model()
 };
