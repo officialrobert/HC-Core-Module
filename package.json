@@ -1,0 +1,20 @@
+{
+  "name": "HC-Linear-Regression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel --presets @babel/preset-env -d app/ src && node ./app/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/preset-env": "^7.7.1",
+    "core-js": "^3.4.2",
+    "regenerator-runtime": "^0.13.3"
+  }
+}
