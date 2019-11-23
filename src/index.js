@@ -87,7 +87,7 @@ const HomeCredit = function() {
   };
 };
 
-const sampleFunction = async amt => {
+const HCsample = async amt => {
   const HC1 = new HomeCredit();
   const price = amt; // in pesos unit
   const dpOffset = 2000; // in pesos unit
@@ -112,7 +112,7 @@ AIsample();
 
 module.exports = {
   HC: new HomeCredit(),
-  HCsample: sampleFunction,
+  HCsample,
   AIsample,
   AI: new Model(),
 };

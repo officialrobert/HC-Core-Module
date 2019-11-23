@@ -64,3 +64,10 @@ Home Credit Core Module - consisting of Home Credit's predicted value in determi
 - `status is expected to be true when value returned is true prositive, otherwise false`
 - Example usage `AI1.getScoreWithHistory([ 2000, 1000, 1000, 2000, 2000, 2000, 2000, 2000, 2000, ])`
 - `The values in the array were user's history of monthly payment made`
+
+### 5. Error returns are the same with HC.Cellphone API
+
+## To see how the two APIs work in action, see `AIsample` and `HCsample` functions
+
+- Development codes are under `src` folder
+- AI module's under `src/ai`
